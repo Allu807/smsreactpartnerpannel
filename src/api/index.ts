@@ -1,36 +1,65 @@
+import httpClient from "./httpClient";
 import HttpClient from "./httpClient";
 import { HTTP_END_POINTS } from "./httpEndpoints";
 
 class Client{
-    spareparts={
+    partner={
+        dashboard:{
+        get: (params :string)=>HttpClient.get(HTTP_END_POINTS.dashboard.get,params),
+        postProduct : (data: any)=>HttpClient.post(HTTP_END_POINTS.dashboard.postProduct,params,data),
+        getAll : (params:string)=>HttpClient.get(HTTP_END_POINTS.dashboard.getAllProducts,params),
+        getById : (params:string)=>HttpClient.get(HTTP_END_POINTS.dashboard.getProductById,params),
+        updateProduct : (data:any,params:string)=>HttpClient.update(HTTP_END_POINTS.dashboard.updateProduct,data,params),
+        deleteProduct : ()=>HttpClient.delete(HTTP_END_POINTS.dashboard.deleteProduct)
+    },
+
+    booking:{
+        create : (data:any, params:string) => HttpClient.post(HTTP_END_POINTS.booking.create, data,params),
+        getAll : (params:string) =>httpClient.get(HTTP_END_POINTS.booking.getAll, params),
+        getById : (params:string) => httpClient.get(HTTP_END_POINTS.booking.getById, params),
+        update : (data:any,params:string) => httpClient.update(HTTP_END_POINTS.booking.update, data,params),
+        cancel: (params:string) => httpClient.get(HTTP_END_POINTS.booking.cancel, params),
+},
+
+    announcement:{
+         create: (data:any, params:string) => httpClient.post(HTTP_END_POINTS.announcement.create,data,params),
+         getAll : (params:string) => httpClient.get(HTTP_END_POINTS.announcement.getAll,params)
+    },
+
+    enquiry:{
+        create: (data:any, params:string) => httpClient.post(HTTP_END_POINTS.enquiry.create,data,params),
+        getAll: (params:string) => httpClient.get(HTTP_END_POINTS.enquiry.getAll,params),
+        update: (data:any, params:string) => httpClient.update(HTTP_END_POINTS.enquiry.update,data,params),
+    },
+    spareparts:{
         create:  (data: any, params:string) => HttpClient.post(HTTP_END_POINTS.spareparts.create, data,params),
         getById: (params:string) => HttpClient.get(HTTP_END_POINTS.spareparts.getById, params),
         getAll : (params:string) => HttpClient.get(HTTP_END_POINTS.spareparts.getAll, params),
         update : (data:any, params:string) => HttpClient.update(HTTP_END_POINTS.spareparts.getAll,data,params),
         updateStatus :(data:any, params:string)=>HttpClient.update(HTTP_END_POINTS.spareparts.updateStatus,data,params),
         delete : ()=>HttpClient.delete(HTTP_END_POINTS.spareparts.delete)
-    };
-    order_history={
+    },
+    order_history:{
         create: (data:any, params:string) => HttpClient.post(HTTP_END_POINTS.order_history.create, data,params),
         getById: (params:string) => HttpClient.get(HTTP_END_POINTS.order_history.getById,params),
         getAll : (params:string) => HttpClient.get(HTTP_END_POINTS.order_history.getAll, params),
         update : (data:any, params:string) => HttpClient.update(HTTP_END_POINTS.order_history.update,data,params),
         updateStatus :(data:any, params:string)=>HttpClient.update(HTTP_END_POINTS.order_history.updateStatus,data,params),
         delete : ()=>HttpClient.delete(HTTP_END_POINTS.order_history.delete)
-    };
-    service_history={
+    },
+    service_history:{
         create: (data:any, params:string)=>HttpClient.post(HTTP_END_POINTS.service_history.create,data,params),
         getById: (params:string) => HttpClient.get(HTTP_END_POINTS.service_history.getById,params),
         getAll: (params:string) => HttpClient.get(HTTP_END_POINTS.service_history.getAll,params),
-    };
-    services={
+    },
+    services:{
         create: (data:any, params:string) => HttpClient.post(HTTP_END_POINTS.services.create, data,params),
         getById: (params:string) => HttpClient.get(HTTP_END_POINTS.services.getById,params),
         getAll : (params:string) => HttpClient.get(HTTP_END_POINTS.services.getAll, params),
         update : (data:any, params:string)=>HttpClient.update(HTTP_END_POINTS.services.update,data,params),
         updateStatus :(data:any, params:string)=>HttpClient.update(HTTP_END_POINTS.services.updateStatus,data,params)
-    };
-    notifications={
+    },
+    notifications:{
         create: (data:any,params:string)=>HttpClient.post(HTTP_END_POINTS.notifications.create,data,params),
         createBulk: (data:any,params:string)=>HttpClient.post(HTTP_END_POINTS.notifications.createBulk,data,params),
         getByUser: (params:string)=>HttpClient.get(HTTP_END_POINTS.notifications.getByUser,params),
@@ -45,6 +74,7 @@ class Client{
         createPreference:(data:any,params:string)=>HttpClient.post(HTTP_END_POINTS.notifications.createPreference,data,params),
         updatePreference:(data:any,params:string)=>HttpClient.update(HTTP_END_POINTS.notifications.updatePreference,data,params),
         getPreference:(params:string)=>HttpClient.get(HTTP_END_POINTS.notifications.getPreference,params)
+    }
     }
 }
 

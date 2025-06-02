@@ -7,6 +7,7 @@ const categories = [
   "All", "General", "Booking", "Payments",
 ];
 
+
 const initialAnnouncements = [
   {
     id: 1,
